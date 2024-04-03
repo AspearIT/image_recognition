@@ -1,5 +1,7 @@
 FROM php:8.3-apache
 
+WORKDIR /var/www
+
 RUN apt-get update -yqq && \
     apt-get install -yqq vim git exiftool && \
     docker-php-ext-install exif && \

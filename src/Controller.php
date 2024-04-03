@@ -3,6 +3,7 @@
 namespace Imreg;
 
 use Imreg\AIProvider\AIProvider;
+use Imreg\AivailableTools\AvailableTools;
 use Imreg\Repository\ConversationRepository;
 use Imreg\Value\Conversation;
 use Imreg\Value\Image;
@@ -22,6 +23,7 @@ class Controller
         private readonly ConversationRepository $conversationRepository,
         private readonly AIProvider $AIClient,
         private readonly Environment $twig,
+        private readonly AvailableTools $availableTools,
     ) {}
 
     public function index()
@@ -34,24 +36,18 @@ class Controller
     {
         $conversation = Conversation::start($image, $case);
         $this->conversationRepository->save($conversation);
-        $conversation = $this->AIClient->completeConversation($conversation->withNewMessage(self::START_QUESTION));
+        $conversation = $this->AIClient->completeConversation($conversation->withNewMessage(self::START_QUESTION), $this->availableTools);
         $this->conversationRepository->save($conversation);
 
         return $this->twig->render('convo.twig', [
             'conversation' => $conversation,
-//            'question' => $question,
-//            'response' => nl2br($response),
-//            'image' => [
-//                'type' => $image->type,
-//                'content' => $image->content(),
-//            ]
         ]);
     }
 
     public function complete(UuidInterface $conversationUuid, string $question)
     {
         $conversation = $this->conversationRepository->get($conversationUuid);
-        $conversation = $this->AIClient->completeConversation($conversation->withNewMessage($question));
+        $conversation = $this->AIClient->completeConversation($conversation->withNewMessage($question), $this->availableTools);
         $this->conversationRepository->save($conversation);
 
         return $this->twig->render('convo.twig', [

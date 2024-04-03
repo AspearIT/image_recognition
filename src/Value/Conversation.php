@@ -11,20 +11,9 @@ readonly class Conversation
         "The questioner is a claims handler who wants to confirm a claim in the Netherlands.",
         "In case of a car damage, the left side of the car is the drivers side.",
         "If a given image seems edited for any reason, always tell this to the user, regardless of the question he asks.",
-        "If a user asks for estimates, always give them as accurately as possible. If it is not accurate, still give your estimate.",
+        "If a user asks for estimates, don't ask for confirmation. Just call the estimate function.",
         "Answer briefly and concisely."
     ];
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @param Message[] $messages
