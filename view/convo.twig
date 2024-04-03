@@ -1,0 +1,65 @@
+{% extends 'main.twig' %}
+
+{% block content %}
+    <form action="/complete" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="uuid" value="{{ conversation.uuid }}"/>
+        <div class="container mt-3">
+            <div class="row mt-3">
+                <div class="col-5">
+                    <img src="data:{{ conversation.image.type }};base64,{{ conversation.image.content() }}" class="img-fluid" alt="Responsive image">
+                </div>
+                <div class="col-7">
+                    <div class="container">
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <b>Omschrijving:</b>
+                                <div>
+                                    {{ conversation.case|nl2br }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-10">
+                                <div class="message assistant">
+                                    Wat kan ik voor je betekenen?
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            </div>
+                        </div>
+                        {% for message in conversation.messages %}
+                            <div class="row mt-3">
+                                {% if message.role == 'assistant' %}
+                                    <div class="col-10">
+                                        <div class="message assistant">
+                                            {{ message.content|nl2br }}
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                    </div>
+                                {% else %}
+                                    <div class="col-2"></div>
+                                    <div class="col-10 text-right">
+                                        <div class="message user">
+                                            {{ message.content }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <input name="message" class="form-control" id="message"/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Verzenden</button>
+                            </div>
+                        </div>`
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

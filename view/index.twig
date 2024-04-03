@@ -1,0 +1,44 @@
+{% extends 'main.twig' %}
+
+{% block content %}
+    <form action="/upload" method="post" enctype="multipart/form-data">
+{#        <div class="container mt-3">#}
+{#            <div class="row">#}
+{#                <div class="col-4">#}
+{#                    AI provider#}
+{#                </div>#}
+{#                <div class="col-8">#}
+{#                    <select name="ai_provider" id="ai_provider" class="form-control">#}
+{#                        <option value="openai" selected="selected">OpenAI</option>#}
+{#                        <option value="azure">Azure Vision</option>#}
+{#                    </select>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-4">
+                    Upload een foto
+                </div>
+                <div class="col-8">
+                    <input type="file" name="file" id="file" class="form-control">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                    Wat is de case?
+                </div>
+                <div class="col-8">
+                    <textarea type="text" name="description" id="description" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                </div>
+                <div class="col-8">
+                    <button type="submit" class="btn btn-primary">Start conversatie</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

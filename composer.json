@@ -1,0 +1,25 @@
+{
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-exif": "*",
+        "ext-curl": "*",
+        "openai-php/client": "^0.8.4",
+        "symfony/http-client": "^7.0",
+        "nyholm/psr7": "^1.8",
+        "larapack/dd": "^1.1",
+        "twig/twig": "^3.8",
+        "aws/aws-sdk-php": "^3.303",
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Imreg\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
