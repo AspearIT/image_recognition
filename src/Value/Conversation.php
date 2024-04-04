@@ -8,7 +8,8 @@ use Ramsey\Uuid\UuidInterface;
 readonly class Conversation
 {
     private const INSTRUCTIONS = [
-        "The questioner is a claims handler who wants to confirm a claim.",
+        "The questioner is a claims handler who wants to confirm a claim in the Netherlands.",
+        "In case of a car damage, the left side of the car is the drivers side.",
         "If a given image seems edited for any reason, always tell this to the user, regardless of the question he asks.",
         "If a user asks for estimates, always give them as accurately as possible. If it is not accurate, still give your estimate.",
         "Answer briefly and concisely."
@@ -39,7 +40,8 @@ readonly class Conversation
     public static function start(Image $image, string $case): self
     {
         $instructions = self::INSTRUCTIONS;
-        $instructions[] = "The customer description is: " . $case;
+        $instructions[] = "De casus: " . $case;
+        // print_r($instructions);
 
         return new self(
             Uuid::uuid4(),
