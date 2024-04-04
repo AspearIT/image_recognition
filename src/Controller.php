@@ -14,9 +14,10 @@ class Controller
     private const START_QUESTION = 
         "Vergelijk de foto met de omschrijving van de schade. Je moet in ieder geval antwoord geven op de volgende vragen:\n" .
         "1) Komt de foto overeen met de omschrijving van de schade?\n".
-        "2) Geef het merk en model van de auto;\n".
-        "3) Geef aan waar de schades zich bevinden\n".
-        "4) Indien mogelijk, wat zijn de geschatte reparatiekosten?";
+        "2) Wat is het kenteken van de auto?\n".
+        "3) Geef het merk en model van de auto;\n".
+        "4) Geef aan waar de schades zich bevinden\n".
+        "5) Indien mogelijk, wat zijn de geschatte reparatiekosten?";
 
     public function __construct(
         private readonly ConversationRepository $conversationRepository,
