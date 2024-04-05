@@ -9,5 +9,6 @@ enum CarType: string
     case PEUGEOT = 'Peugeot';
     case DACIA = 'Dacia';
     case MERCEDES = 'Mercedes';
+    case CITROEN = 'Citroen';
     case OTHER = 'Other';
 }

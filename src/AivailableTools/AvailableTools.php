@@ -42,8 +42,9 @@ class AvailableTools
     {
         switch ($toolCall->name) {
             case 'RDWPlateSearch':
-                $carInfo = $this->rdwPlateSearch->searchInfo($toolCall->arguments['plate']);
-                if(is_null($carInfo)) {
+                try {
+                    $carInfo = $this->rdwPlateSearch->searchInfo($toolCall->arguments['plate']);
+                } catch (\Exception) {
                     return "Geen kentekeninformatie gevonden";
                 }
                 $response = [

@@ -12,6 +12,7 @@ class DamageCostCalculator
             CarType::RENAULT => 30_000.0,
             CarType::PEUGEOT => 25_000.0,
             CarType::MERCEDES => 10_000.0,
+            CarType::CITROEN => 7_000.0,
             CarType::BMW => 10_000.0,
         };
 
