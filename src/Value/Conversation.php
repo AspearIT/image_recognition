@@ -12,7 +12,7 @@ readonly class Conversation
         "In case of a car damage, the driver side is the left side of a car.",
         "If asked for a position, take the perspective from behind a car.",
         "If a given image seems edited for any reason, always tell this to the user, regardless of the question he asks.",
-        "If a user asks for estimates, always give them as accurately as possible. If it is not accurate, still give your estimate.",
+        "If a user asks for estimates, don't ask for confirmation. Just call the estimate function for large damages, for small damages use the table below.",
         "Answer briefly and concisely.",
         "",
         "Om kleine schades af te handelen heb je de volgende informatie ter beschikking:",
@@ -37,17 +37,6 @@ readonly class Conversation
         "Volledige vervanging zonder sensoren: Prijs: € 300,-, met sensoren: Prijs: € 400,- tot € 600,-",
         "Sterretje in de voorruit: Prijs: € 60,-"
     ];
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @param Message[] $messages

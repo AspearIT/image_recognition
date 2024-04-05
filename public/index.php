@@ -1,5 +1,8 @@
 <?php
 
+use Imreg\AivailableTools\AvailableTools;
+use Imreg\AivailableTools\DamageCost\DamageCostCalculator;
+use Imreg\AivailableTools\PlateInfo\RDWPlateSearch;
 use Imreg\Controller;
 use Imreg\Repository\ConversationRepository;
 use Imreg\Value\Image;
@@ -18,11 +21,17 @@ $twig = new Environment(
     new FilesystemLoader(__DIR__ . '/../view'),
 );
 
+$availableTools = new AvailableTools(
+    new RDWPlateSearch(),
+    new DamageCostCalculator()
+);
+
 try {
     $controller = new Controller(
         new ConversationRepository(),
         $openAIClient,
         $twig,
+        $availableTools,
     );
 
     $path = $_SERVER['REQUEST_URI'];
